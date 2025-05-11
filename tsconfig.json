@@ -1,0 +1,21 @@
+{
+  "allowArbitraryExtensions": true,
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": false,
+    "sourceMap": false,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*", "dist/modules"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+}

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "DNPGP",
+  "version": "1.0",
+  "description": [
+    "Encrypt and decrypt sign and verify signature of pgp make message very sure",
+    "generate key pair that will be stored in local storage",
+    "search your public key send it to your friend in facebook for example",
+    "and then you can send encrypted message to each other",
+    "you can also use it to sign and verify signature of message",
+    "Don't hesitate to check the console if the error is not understandable",
+    "Please check the format of your key its really important"
+  ],
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": ["<all_urls>"]
+}

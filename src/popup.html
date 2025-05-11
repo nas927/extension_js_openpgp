@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNPGP</title>
+    <link rel="stylesheet" href="./toast.css">
+    <style>
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.2em;
+        }
+        .input, .textarea {
+            width: 100%;
+            margin: 5px 0;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h2>Créer une nouvelle clé PGP</h2>
+        <input type="text" class="input" id="newKeyName" placeholder="Votre nom">
+        <input type="email" class="input" id="newKeyEmail" placeholder="Votre email">
+        <button class="button" id="generateKey">Générer la clé</button>
+    </div>
+
+    <div class="section">
+        <h2>Enregistrer une clé publique</h2>
+        <input type="text" class="input" id="saveKeyName" placeholder="Nom de la clé">
+        <input type="text" class="input" id="saveKeyEmail" placeholder="Email à sauvegarder optionnel">
+        <textarea class="textarea" id="saveKeyData" placeholder="Collez la clé publique ici"></textarea>
+        <button class="button" id="savePublicKey">Enregistrer la clé</button>
+    </div>
+
+    <div class="section">
+        <h2>Chiffrer un message</h2>
+        <textarea class="textarea" id="publicKeyToEncrypt" placeholder="Clé public"></textarea>
+        <textarea class="textarea" id="privateKeyToEncrypt" placeholder="Clé privée optionnel"></textarea>
+        <input class="input" id="passPhraseToEncrypt" placeholder="Clé Mot de passe si clé privée" />
+        <textarea class="textarea" id="messageToEncrypt" placeholder="Message à chiffrer"></textarea>
+        <label for="sign">Signer</label>
+        <input type="checkbox" id="sign"/>
+        <button class="button" id="encryptMessage">Chiffrer</button>
+    </div>
+
+    <div class="section">
+        <h2>Déchiffrer un message</h2>
+        <textarea class="textarea" id="publicKeyToDecrypt" placeholder="Clé public"></textarea>
+        <textarea class="textarea" id="privateKeyToDecrypt" placeholder="Clé privée optionnel"></textarea>
+        <input class="input" id="passPhraseToDecrypt" placeholder="Clé Mot de passe si clé privée et chiffré avec" />
+        <textarea class="textarea" id="messageToDecrypt" placeholder="Message à déchiffrer"></textarea>
+        <button class="button" id="decryptMessage">Déchiffrer</button>
+    </div>
+
+    <div class="section">
+        <h2>Signer</h2>
+        <textarea class="textarea" id="signingPrivateKey" placeholder="Collez la clé privée ici"></textarea>
+        <input class="input" id="signingPassPhrase" placeholder="Clé Mot de passe si clé privée si définit" />
+        <textarea class="textarea" id="signingData" placeholder="Collez le message"></textarea>
+        <button class="button" id="Signing">Signer</button>
+    </div>
+
+    <div class="section">
+        <h2>Vérifier une signature</h2>
+        <textarea class="textarea" id="signaturePublicKey" placeholder="Collez la clé public ici"></textarea>
+        <textarea class="textarea" id="signatureData" placeholder="Collez le message signé ici"></textarea>
+        <button class="button" id="verifySignature">Vérifier la signature</button>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+</body>
+</html>
