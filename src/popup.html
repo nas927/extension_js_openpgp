@@ -39,9 +39,29 @@
         .button:hover {
             background-color: #45a049;
         }
+        img {
+            position: fixed;
+            right: 20px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            animation: rotate 3s linear infinite;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
+    <img src="./reload.svg" id="reload" alt="reload">
     <!-- show all generateKey -->
     <div class="test"></div>
     <div class="section">

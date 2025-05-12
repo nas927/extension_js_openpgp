@@ -34,7 +34,6 @@ const generateKey = document.getElementById("generateKey")?.addEventListener("cl
         }
     }
 
-    init();
 });
 
 const saveKey = document.getElementById("savePublicKey")?.addEventListener("click", () => {
@@ -49,7 +48,6 @@ const saveKey = document.getElementById("savePublicKey")?.addEventListener("clic
         return;
 
     key.storeMnemonic(name.value, email.value, "", publicKey.value);
-    init();
 });
 
 const encrypt = document.getElementById("encryptMessage")?.addEventListener("click", async () => {

@@ -51,7 +51,11 @@ export function init(): void {
     const selectDecrypt = document.getElementById("decryptSelect") as HTMLSelectElement;
     const selectSigning = document.getElementById("signingSelect") as HTMLSelectElement;
     const selectCheckSigning = document.getElementById("checkSigningSelect") as HTMLSelectElement;
+    const reload = document.getElementById("reload") as HTMLImageElement;
 
+    reload.addEventListener("click", () => {
+        window.location.reload();
+    })
     let itemsName: string[] = retrieveNames({...localStorage});
     console.log(itemsName);
 
