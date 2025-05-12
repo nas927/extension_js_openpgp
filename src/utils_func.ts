@@ -50,6 +50,7 @@ export function init(): void {
     const selectEncrypt = document.getElementById("encryptSelect") as HTMLSelectElement;
     const selectDecrypt = document.getElementById("decryptSelect") as HTMLSelectElement;
     const selectSigning = document.getElementById("signingSelect") as HTMLSelectElement;
+    const selectCheckSigning = document.getElementById("checkSigningSelect") as HTMLSelectElement;
 
     let itemsName: string[] = retrieveNames({...localStorage});
     console.log(itemsName);
@@ -61,10 +62,12 @@ export function init(): void {
         const optionEncrypt = document.createElement("option");
         const optionDecrypt = document.createElement("option");
         const optionSigning = document.createElement("option");
+        const optionCheckSigning = document.createElement("option");
 
         optionEncrypt.innerHTML = item;
         optionDecrypt.innerHTML = item;
         optionSigning.innerHTML = item;
+        optionCheckSigning.innerHTML = item;
 
         optionEncrypt.addEventListener("click", (event) => {
             bindValues(event, "encrypt")
@@ -75,10 +78,14 @@ export function init(): void {
         optionSigning.addEventListener("click", (event) => {
             bindValues(event, "signer")
         });
+        optionCheckSigning.addEventListener("click", (event) => {
+            bindValues(event, "check")
+        });
 
-        selectEncrypt.appendChild(optionEncrypt)
-        selectDecrypt.appendChild(optionDecrypt)
+        selectEncrypt.appendChild(optionEncrypt);
+        selectDecrypt.appendChild(optionDecrypt);
         selectSigning.appendChild(optionSigning);
+        selectCheckSigning.appendChild(optionCheckSigning);
     });
 }
 
@@ -93,6 +100,8 @@ export function bindValues(event, string: string): void {
 
     const privateKeySigning = document.getElementById("signingPrivateKey") as HTMLInputElement;
     const passphraseSigning = document.getElementById("signingPassPhrase") as HTMLInputElement;
+
+    const publicKeyCheckSigning = document.getElementById("signaturePublicKey") as HTMLInputElement;
 
     const publicKey = localStorage.getItem(event.target.innerText + "_public");
     const privateKey = localStorage.getItem(event.target.innerText + "_private");
@@ -122,5 +131,10 @@ export function bindValues(event, string: string): void {
             privateKeySigning.value = privateKey;
         if (passphrase !== "")
             passphraseSigning.value = passphrase;
+    }
+    else if (string === "check")
+    {
+        if (publicKey !== "")
+            publicKeyCheckSigning.value = publicKey;
     }
 }
