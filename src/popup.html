@@ -42,6 +42,8 @@
     </style>
 </head>
 <body>
+    <!-- show all generateKey -->
+    <div class="test"></div>
     <div class="section">
         <h2>Créer une nouvelle clé PGP</h2>
         <input type="text" class="input" id="newKeyName" placeholder="Votre nom">
@@ -59,6 +61,11 @@
 
     <div class="section">
         <h2>Chiffrer un message</h2>
+        <label for="encryptSelect">
+            Choissez une clé
+        </label>
+        <select id="encryptSelect"></select>
+        </select>
         <textarea class="textarea" id="publicKeyToEncrypt" placeholder="Clé public"></textarea>
         <textarea class="textarea" id="privateKeyToEncrypt" placeholder="Clé privée optionnel"></textarea>
         <input class="input" id="passPhraseToEncrypt" placeholder="Clé Mot de passe si clé privée" />
@@ -70,6 +77,10 @@
 
     <div class="section">
         <h2>Déchiffrer un message</h2>
+        <label for="decryptSelect">
+            Choissez une clé
+        </label>
+        <select id="decryptSelect"></select>
         <textarea class="textarea" id="publicKeyToDecrypt" placeholder="Clé public"></textarea>
         <textarea class="textarea" id="privateKeyToDecrypt" placeholder="Clé privée optionnel"></textarea>
         <input class="input" id="passPhraseToDecrypt" placeholder="Clé Mot de passe si clé privée et chiffré avec" />
@@ -79,6 +90,10 @@
 
     <div class="section">
         <h2>Signer</h2>
+        <label for="signingSelect">
+            Choissez une clé
+        </label>
+        <select id="signingSelect"></select>
         <textarea class="textarea" id="signingPrivateKey" placeholder="Collez la clé privée ici"></textarea>
         <input class="input" id="signingPassPhrase" placeholder="Clé Mot de passe si clé privée si définit" />
         <textarea class="textarea" id="signingData" placeholder="Collez le message"></textarea>

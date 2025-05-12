@@ -1,20 +1,40 @@
 import * as openpgp from 'openpgp';
 import { Buffer } from 'buffer';
 import Key from './key';
+import { KeyPair } from './def';
+import { init, bindValues } from './utils_func';
 
 globalThis.Buffer = Buffer
 
 openpgp.config.rejectCurves = new Set([]);
 
+declare global {
+    interface Window {
+        bindValues: (event, string: string) => void;
+    }
+}
+
+window.bindValues = bindValues;
+init();
 const key = new Key();
-const generateKey = document.getElementById("generateKey")?.addEventListener("click", () => {
+const generateKey = document.getElementById("generateKey")?.addEventListener("click", async () => {
     const name = document.getElementById("newKeyName") as HTMLInputElement;
     const email = document.getElementById("newKeyEmail") as HTMLInputElement;
+    const show = document.querySelector(".test") as HTMLElement;
     
     if (!name || !email) {
         throw new Error("Elements not found");
     }
-    key.generateKey(name.value, email.value);
+    const generated: KeyPair = await key.generateKey(name.value, email.value);
+    if (generated)
+    {
+        for (const gen in generated)
+        {
+            show.innerText += gen + ": \n" + generated[gen] + "\n\n";
+        }
+    }
+
+    init();
 });
 
 const saveKey = document.getElementById("savePublicKey")?.addEventListener("click", () => {
@@ -29,6 +49,7 @@ const saveKey = document.getElementById("savePublicKey")?.addEventListener("clic
         return;
 
     key.storeMnemonic(name.value, email.value, "", publicKey.value);
+    init();
 });
 
 const encrypt = document.getElementById("encryptMessage")?.addEventListener("click", async () => {

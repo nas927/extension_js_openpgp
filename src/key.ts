@@ -19,7 +19,8 @@ export default class Key {
         if (utils.checkAll(true, { name: name, publicKey: publicKey }))
             return;
         name = name as string;
-        if (localStorage.getItem(name)) {
+        if (localStorage.getItem(name)) 
+        {
             localStorage.setItem(name + "_saved", localStorage.getItem(name));
             localStorage.setItem(name + "_email_saved", localStorage.getItem(name + "_email"));
             localStorage.setItem(name + "_public_saved", localStorage.getItem(name + "_public"));
@@ -54,9 +55,9 @@ export default class Key {
         return seedBuffer.toString('hex');
     }
     
-    public async generateKey(name: Inputs["name"], email: Inputs["email"], mnemonic: string | null = null, curve: PGPCurve = PGPCurve.SECP256K1): Promise<KeyPair | void> {
+    public async generateKey(name: Inputs["name"], email: Inputs["email"], mnemonic: string | null = null, curve: PGPCurve = PGPCurve.SECP256K1): Promise<KeyPair> {
         if (utils.checkAll(true, { name: name, email: email }))
-            return;
+            return {};
         let seedHex = "";
         if (mnemonic === "" || !mnemonic) {
             mnemonic = bip39.generateMnemonic(); 
