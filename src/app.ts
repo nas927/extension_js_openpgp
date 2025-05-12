@@ -47,7 +47,7 @@ const saveKey = document.getElementById("savePublicKey")?.addEventListener("clic
     if (!key.verifyKey(0, publicKey.value))
         return;
 
-    key.storeMnemonic(name.value, email.value, "", publicKey.value);
+    key.storeMnemonic(name.value, email.value, "name", publicKey.value);
 });
 
 const encrypt = document.getElementById("encryptMessage")?.addEventListener("click", async () => {
